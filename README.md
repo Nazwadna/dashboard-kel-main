@@ -1,16 +1,49 @@
-# React + Vite
+# Dashboard Kelurahan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplikasi dashboard berbasis React + Vite.
 
-Currently, two official plugins are available:
+## 1) Jalankan project di lokal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install dependency:
+   ```bash
+   npm install
+   ```
+2. Copy file environment:
+   ```bash
+   cp .env.example .env
+   ```
+   Untuk Windows PowerShell:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+3. Isi `.env`:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+4. Jalankan:
+   ```bash
+   npm run dev
+   ```
 
-## React Compiler
+## 2) Build production
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+```
 
-## Expanding the ESLint configuration
+Output build ada di folder `dist/`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 3) Deploy ke Vercel
+
+Project ini sudah punya `vercel.json` untuk SPA rewrite. Langkah cepat:
+
+1. Push code ke GitHub (sudah selesai).
+2. Login ke Vercel lalu import repo GitHub ini.
+3. Di Vercel Project Settings > Environment Variables, tambahkan:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+4. Deploy.
+
+## 4) Keamanan secret
+
+- Jangan commit file `.env`.
+- Gunakan `.env.example` sebagai template value yang aman.
